@@ -8,6 +8,7 @@ var checkUrl = 'rap.alibaba-inc.com/validate/';
 var protocol = 'http://';
 
 module.exports = {
+    // 请求mock数据
     getMockData: function(projectId, reqPath) {
         // 请求路径
         reqPath = reqPath;
