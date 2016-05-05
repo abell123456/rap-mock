@@ -8,9 +8,9 @@
 后来，我去查了下rap的API开放文档，发现rap自己提供了对参数的校验以及对数据进行mock并对外提供mock数据的接口，于是，理所当然的我们就可以直接去调他们这些接口即可，无需再自己去折腾。
 
 ## 相关参考文档
-[rap用户手册](https://github.com/thx/RAP/wiki/user_manual_cn#%E5%89%8D%E7%AB%AFmock%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90)
-[rap官网地址](http://thx.github.io/RAP/index_zh.html)
-[koa教程](http://javascript.ruanyifeng.com/nodejs/koa.html)
-[koa跨域支持模块：koa-cors](https://wohugb.gitbooks.io/koajs/content/misc/koa-cors.html)
-[request同步写法：co-request](https://www.npmjs.com/package/co-request)
+[rap用户手册](https://github.com/thx/RAP/wiki/user_manual_cn#%E5%89%8D%E7%AB%AFmock%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90)  
+[rap官网地址](http://thx.github.io/RAP/index_zh.html)  
+[koa教程](http://javascript.ruanyifeng.com/nodejs/koa.html)  
+[koa跨域支持模块：koa-cors](https://wohugb.gitbooks.io/koajs/content/misc/koa-cors.html)  
+[request同步写法：co-request](https://www.npmjs.com/package/co-request)  
 [koa 利用 node-fetch 写个自己的代理](https://segmentfault.com/a/1190000003994518)
