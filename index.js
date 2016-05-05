@@ -34,7 +34,7 @@ var proxyUrl = 'localhost:8081';
 // 如果没有传入做报错处理，退出执行
 var projectId = process.argv[2];
 
-if(!projectId) {
+if (!projectId) {
     console.log(logSymbols.error + ' 请传入项目的projectId!'.red);
 
     process.exit(1);
@@ -89,12 +89,10 @@ proxyServer.use(logger());
 proxyServer.use(function*(next) {
     var requestPath = this.path || '';
     var requestMethod = (this.method || 'POST').toLowerCase();
+    var query = requestMethod === 'get' ? this.request.query : this.request.body;
 
-    // console.log('request params:', this.request.body);
-    // console.log('requestPath:', requestPath);
+    var validCheckResult = yield rap.checkParamsValid(projectId, requestPath, query);
 
-    var validCheckResult = yield rap.checkParamsValid(projectId, requestPath, this.request.body);
-    // console.log('validCheckResult:', validCheckResult);
     if (typeof validCheckResult === 'string') {
         validCheckResult = JSON.parse(validCheckResult);
     }
