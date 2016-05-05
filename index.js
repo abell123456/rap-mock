@@ -18,7 +18,6 @@ var logSymbols = require('log-symbols');
 var colors = require('colors');
 
 var proxy = require('./proxy');
-
 var rap = require('./rap');
 
 // 加载各种中间件
@@ -95,7 +94,8 @@ proxyServer.use(function*(next) {
     console.log(logSymbols.warning + ' 请求参数校验结果如下：'.gray + '(“缺失”代表返回数据缺失，“未在文档中定义”表示传的参数没有写在rap里)'.blue);
     console.log(('\n  -- ' + validCheckResult.resultStr.replace(/\n|\r|\r\n/g, '\n  --')).red);
     console.log();
-
+    
+    // 1072是projectId，自己可以针对自己实际的rap上的projectId做更改
     var returnData = yield rap.getMockData(1072, requestPath);
 
     this.body = returnData;
