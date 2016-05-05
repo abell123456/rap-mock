@@ -4,7 +4,7 @@
   "description": "基于前后端数据接口定制平台rap开放API的本地参数检查与数据mock服务",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "mock": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   "dependencies": {
     "co": "^4.6.0",
     "co-request": "^1.0.0",
+    "colors": "^1.1.2",
     "koa": "^1.2.0",
     "koa-bodyparser": "^2.0.1",
     "koa-cors": "0.0.16",

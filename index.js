@@ -30,6 +30,15 @@ var cors = require('koa-cors');
 var requestUrl = 'http://localhost:8080';
 var proxyUrl = 'localhost:8081';
 
+// 命令行中比如执行`：npm run mock 1072`时最后的参数是项目的projectId
+// 如果没有传入做报错处理，退出执行
+var projectId = process.argv[2];
+
+if(!projectId) {
+    console.log(logSymbols.error + ' 请传入项目的projectId!'.red);
+
+    process.exit(1);
+}
 
 // 前端页面里请求的接口地址
 var app = koa();
@@ -84,7 +93,7 @@ proxyServer.use(function*(next) {
     // console.log('request params:', this.request.body);
     // console.log('requestPath:', requestPath);
 
-    var validCheckResult = yield rap.checkParamsValid(1072, requestPath, this.request.body);
+    var validCheckResult = yield rap.checkParamsValid(projectId, requestPath, this.request.body);
     // console.log('validCheckResult:', validCheckResult);
     if (typeof validCheckResult === 'string') {
         validCheckResult = JSON.parse(validCheckResult);
@@ -94,9 +103,8 @@ proxyServer.use(function*(next) {
     console.log(logSymbols.warning + ' 请求参数校验结果如下：'.gray + '(“缺失”代表返回数据缺失，“未在文档中定义”表示传的参数没有写在rap里)'.blue);
     console.log(('\n  -- ' + validCheckResult.resultStr.replace(/\n|\r|\r\n/g, '\n  --')).red);
     console.log();
-    
-    // 1072是projectId，自己可以针对自己实际的rap上的projectId做更改
-    var returnData = yield rap.getMockData(1072, requestPath);
+
+    var returnData = yield rap.getMockData(projectId, requestPath);
 
     this.body = returnData;
 
